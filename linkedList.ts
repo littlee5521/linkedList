@@ -107,8 +107,23 @@ class list {
     let temp = this.head
     while (count != index - 1 && temp.next != undefined) {
       temp = temp.next
+      count++
     }
     temp.next = newIten
+  }
+
+  removeAt(index: number) {
+    let orgItem = this.at(index)
+    let newItem = orgItem?.next
+    let count = 0
+    let temp = this.head
+    while (count != index - 1 && temp.next != undefined) {
+      temp = temp.next
+      count++
+    }
+    temp.next = newItem
+
+
   }
 }
 
@@ -134,10 +149,10 @@ const cat = function(array: number[]) {
 }
 
 const test = new list([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+console.log(test.at(2))
+test.removeAt(2)
+console.log(test.at(2))
 console.log(test.at(1))
-test.insertAt(20, 1)
-console.log(test.at(1))
-
 
 
 

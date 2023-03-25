@@ -93,8 +93,20 @@ var list = /** @class */ (function () {
         var temp = this.head;
         while (count != index - 1 && temp.next != undefined) {
             temp = temp.next;
+            count++;
         }
         temp.next = newIten;
+    };
+    list.prototype.removeAt = function (index) {
+        var orgItem = this.at(index);
+        var newItem = orgItem === null || orgItem === void 0 ? void 0 : orgItem.next;
+        var count = 0;
+        var temp = this.head;
+        while (count != index - 1 && temp.next != undefined) {
+            temp = temp.next;
+            count++;
+        }
+        temp.next = newItem;
     };
     return list;
 }());
@@ -115,6 +127,7 @@ var cat = function (array) {
     return new node(value, cat(array));
 };
 var test = new list([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
-console.log(test.at(1));
-test.insertAt(20, 1);
+console.log(test.at(2));
+test.removeAt(2);
+console.log(test.at(2));
 console.log(test.at(1));
