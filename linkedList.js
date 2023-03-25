@@ -40,6 +40,7 @@ var list = /** @class */ (function () {
         return temp;
     };
     list.prototype.at = function (index) {
+        //takes a number and retunrs the value at the index
         var temp = this.head;
         var count = 0;
         if (index > this.length()) {
@@ -53,6 +54,7 @@ var list = /** @class */ (function () {
     };
     list.prototype.pop = function () {
         var _a;
+        //removes the last element and returns its value
         var temp = this.indexof(this.tail().data);
         if (temp == undefined) {
             return null;
@@ -63,7 +65,15 @@ var list = /** @class */ (function () {
         item.next = undefined;
         return value;
     };
+    list.prototype.contains = function (item) {
+        var temp = this.indexof(item);
+        if (temp == null) {
+            return false;
+        }
+        return true;
+    };
     list.prototype.indexof = function (item) {
+        //takes a item and returns its index
         var temp = this.head;
         var count = 0;
         while (item != temp.data) {
@@ -97,3 +107,4 @@ var test = new list([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
 console.log(test.tail());
 console.log(test.pop());
 console.log(test.tail());
+console.log(test.contains(50));

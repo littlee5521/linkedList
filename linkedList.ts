@@ -77,6 +77,15 @@ class list {
 
   }
 
+  contains(item: number) {
+    //returns false if item is not found, uses indexof since it already iterates through
+    let temp = this.indexof(item)
+    if (temp == null) {
+      return false
+    }
+    return true
+  }
+
   indexof(item: number) {
     //takes a item and returns its index
     let temp = this.head
@@ -117,7 +126,7 @@ const test = new list([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
 console.log(test.tail())
 console.log(test.pop())
 console.log(test.tail())
-
+console.log(test.contains(50))
 
 
 
