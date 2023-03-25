@@ -55,7 +55,7 @@ class list {
     let temp = this.head
     let count = 0
     if (index > this.length()) {
-      return null
+      return undefined
     }
     while (count != index && temp.next != undefined) {
       temp = temp.next
@@ -99,6 +99,17 @@ class list {
     }
     return count
   }
+
+  insertAt(value: number, index: number) {
+    let orgItem = this.at(index)
+    let newIten = new node(value, orgItem)
+    let count = 0
+    let temp = this.head
+    while (count != index - 1 && temp.next != undefined) {
+      temp = temp.next
+    }
+    temp.next = newIten
+  }
 }
 
 class node {
@@ -123,10 +134,9 @@ const cat = function(array: number[]) {
 }
 
 const test = new list([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
-console.log(test.tail())
-console.log(test.pop())
-console.log(test.tail())
-console.log(test.contains(50))
+console.log(test.at(1))
+test.insertAt(20, 1)
+console.log(test.at(1))
 
 
 

@@ -44,7 +44,7 @@ var list = /** @class */ (function () {
         var temp = this.head;
         var count = 0;
         if (index > this.length()) {
-            return null;
+            return undefined;
         }
         while (count != index && temp.next != undefined) {
             temp = temp.next;
@@ -66,6 +66,7 @@ var list = /** @class */ (function () {
         return value;
     };
     list.prototype.contains = function (item) {
+        //returns false if item is not found, uses indexof since it already iterates through
         var temp = this.indexof(item);
         if (temp == null) {
             return false;
@@ -84,6 +85,16 @@ var list = /** @class */ (function () {
             count++;
         }
         return count;
+    };
+    list.prototype.insertAt = function (value, index) {
+        var orgItem = this.at(index);
+        var newIten = new node(value, orgItem);
+        var count = 0;
+        var temp = this.head;
+        while (count != index - 1 && temp.next != undefined) {
+            temp = temp.next;
+        }
+        temp.next = newIten;
     };
     return list;
 }());
@@ -104,7 +115,6 @@ var cat = function (array) {
     return new node(value, cat(array));
 };
 var test = new list([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
-console.log(test.tail());
-console.log(test.pop());
-console.log(test.tail());
-console.log(test.contains(50));
+console.log(test.at(1));
+test.insertAt(20, 1);
+console.log(test.at(1));
